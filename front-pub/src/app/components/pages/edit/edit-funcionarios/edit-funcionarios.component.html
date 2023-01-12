@@ -1,0 +1,6 @@
+<div *ngIf="funcionario">
+  <h2>
+    Editando o fornecedor <span>{{ funcionario.nome }}</span>
+  </h2>
+  <app-formulario-funcionarios (onSubmit)="editHandler($event)" [funcionarioData]="funcionario" [btnText]="btnText"></app-formulario-funcionarios>
+</div>

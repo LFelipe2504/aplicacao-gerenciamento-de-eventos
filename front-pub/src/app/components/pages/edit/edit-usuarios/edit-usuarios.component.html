@@ -1,0 +1,6 @@
+<div *ngIf="usuario">
+  <h2>
+    Editando o usuário <span>{{ usuario.nome }}</span>
+  </h2>
+  <app-formulario-usuarios (onSubmit)="editHandler($event)" [usuarioData]="usuario" [btnText]="btnText"></app-formulario-usuarios>
+</div>

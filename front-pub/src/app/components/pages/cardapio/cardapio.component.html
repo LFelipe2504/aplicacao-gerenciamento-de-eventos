@@ -1,0 +1,97 @@
+<button (click)="cadastroHandler(cadastro)" value="cadastrar-comida"> Cadastrar Comida</button>
+<div *ngIf=" cadastro === true ">
+  <app-formulario-comidas [btnText]="btnText" (onSubmit)="createHandler($event)"></app-formulario-comidas>
+</div>
+
+<button (click)="cadastroHandlerBebida(cadastroBebida)" value="cadastrar-bebida"> Cadastrar bebida</button>
+<div *ngIf=" cadastroBebida === true ">
+  <app-formulario-bebidas [btnText]="btnText" (onSubmit)="createHandlerBebida($event)"></app-formulario-bebidas>
+</div>
+
+<div class="search-container">
+  <form>
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Buscar"
+      (input)="search($event)"
+    />
+  </form>
+</div>
+
+<div class="home-container">
+  <h2>Lista de Comidas:</h2>
+
+  <div *ngIf="comidas.length > 0; else semComidas">
+    <div class="comida-conteiner">
+      <div class="comida" *ngFor="let comida of comidas" >
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{comida.nome}}</td>
+                <td>{{comida.descricao}}</td>
+                <td>R$ {{comida.preco}}</td>
+                <td>
+                  <button mat-button (click)="openPopUp(comida)"><mat-icon>photo</mat-icon></button>
+                  <a mat-button routerLink="comida/edit/{{comida._id}}"><mat-icon>edit</mat-icon></a>
+                  <button mat-button (click)="removeHandler(comida._id)" ><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #semComidas>
+    <h2>Não há comida cadastrada.</h2>
+  </ng-template>
+</div>
+
+<div class="home-container">
+  <h2>Lista de Bebidas:</h2>
+
+  <div *ngIf="bebidas.length > 0; else semBebidas">
+    <div class="bebida-conteiner">
+      <div class="bebida" *ngFor="let bebida of bebidas" >
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{bebida.nome}}</td>
+                <td>{{bebida.descricao}}</td>
+                <td>R$ {{bebida.preco}}</td>
+                <td>
+                  <button mat-button (click)="openPopUpBebida(bebida)"><mat-icon>photo</mat-icon></button>
+                  <a mat-button routerLink="bebida/edit/{{bebida._id}}"><mat-icon>edit</mat-icon></a>
+                  <button mat-button (click)="removeHandlerBebida(bebida._id)" onclick="return confirm('Realmente deseja excluir?')"><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #semBebidas>
+    <h2>Não há bebida cadastrada.</h2>
+  </ng-template>
+</div>
+
+
+
+
+

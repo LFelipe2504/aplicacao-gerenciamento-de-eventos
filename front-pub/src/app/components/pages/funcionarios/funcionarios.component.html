@@ -1,0 +1,56 @@
+<button (click)="cadastroHandler(cadastro)" value="cadastrar-funcionario"> Cadastrar Funcionário</button>
+<div *ngIf=" cadastro === true ">
+  <app-formulario-funcionarios [btnText]="btnText" (onSubmit)="createHandler($event)"></app-formulario-funcionarios>
+</div>
+<div class="search-container">
+  <form>
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Buscar Funcionário"
+      (input)="search($event)"
+    />
+  </form>
+</div>
+<div class="home-container">
+  <h2>Lista de Funcionários:</h2>
+  <!-- busca-->
+  <div *ngIf="funcionarios.length > 0; else semFornecedores">
+    <div class="funcionario-conteiner">
+      <div class="funcionario" *ngFor="let funcionario of funcionarios" >
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Cargo</th>
+                <th>Naturalidade</th>
+                <th>Ano de Admissão</th>
+                <th>Hobbie</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{funcionario.nome}}</td>
+                <td>{{funcionario.idade}}</td>
+                <td>{{funcionario.cargo}}</td>
+                <td>{{funcionario.naturalidade}}</td>
+                <td>{{funcionario.anoAdmissao}}</td>
+                <td>{{funcionario.hobbie}}</td>
+                <td>
+                  <button mat-button (click)="openPopUp(funcionario)"><mat-icon>photo</mat-icon></button>
+                  <a mat-button routerLink="edit/{{funcionario._id}}"><mat-icon>edit</mat-icon></a>
+                  <button mat-button (click)="removeHandler(funcionario._id)" ><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #semFornecedores>
+    <h1>Não há funcionário cadastrado.</h1>
+  </ng-template>
+</div>
+

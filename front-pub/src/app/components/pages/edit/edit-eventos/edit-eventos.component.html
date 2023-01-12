@@ -1,0 +1,6 @@
+<div *ngIf="evento">
+  <h2>
+    Editando o evento <span>{{ evento.nome }}</span>
+  </h2>
+  <app-formulario-eventos (onSubmit)="editHandler($event)" [eventoData]="evento" [btnText]="btnText"></app-formulario-eventos>
+</div>

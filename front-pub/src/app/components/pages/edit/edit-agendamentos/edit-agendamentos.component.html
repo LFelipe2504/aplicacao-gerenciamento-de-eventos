@@ -1,0 +1,6 @@
+<div *ngIf="agendamento">
+  <h2 >
+    Editando os agendamentos do usuário<span>{{ agendamento.nomeUsuario }}</span>
+  </h2>
+  <app-formulario-agendamentos (onSubmit)="editHandler($event)" [agendamentoData]="agendamento" [btnText]="btnText"></app-formulario-agendamentos>
+</div>

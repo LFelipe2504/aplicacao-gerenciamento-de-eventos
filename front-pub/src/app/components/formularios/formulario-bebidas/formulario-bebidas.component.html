@@ -1,0 +1,41 @@
+<form (ngSubmit)="submit()" [formGroup]="bebidaForm" #formDir="ngForm">
+
+  <input type="hidden" formControlName="id">
+
+  <div class="form-group" >
+    <label for="nome">Nome:</label>
+    <input  type="text" formControlName="nome" placeholder="Nome da bebida." required>
+    <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="nome.errors?.['required']">O nome é obrigatório!</p>
+      <p *ngIf="nome.errors?.['maxlenght']">Quantidade de caracteres inválida!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="descricao">Descrição:</label>
+    <textarea placeholder="Descrição da bebida." formControlName="descricao" required></textarea>
+    <div *ngIf="descricao.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="descricao.errors?.['required']">A descrição é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="foto">Imagem:</label>
+    <input  type="text" formControlName="foto" placeholder="Insira a url da imagem." required>
+    <div *ngIf="foto.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="foto.errors?.['required']">A url da imagem é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="preco">Preço:</label>
+    <input  type="number" formControlName="preco" placeholder="Insira o preço." required>
+    <div *ngIf="preco.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="preco.errors?.['required']">O preço é obrigatório!</p>
+    </div>
+  </div>
+
+  <input type="submit" value="{{btnText}}">
+
+</form>
+

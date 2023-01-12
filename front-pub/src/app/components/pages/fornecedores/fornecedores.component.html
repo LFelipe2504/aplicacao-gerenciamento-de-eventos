@@ -1,0 +1,51 @@
+<button (click)="cadastroHandler(cadastro)" value="cadastrar-fonecedor"> Cadastrar Fornecedor</button>
+<div *ngIf=" cadastro === true ">
+  <app-formulario-fornecedores [btnText]="btnText" (onSubmit)="createHandler($event)"></app-formulario-fornecedores>
+</div>
+<div class="search-container">
+  <form>
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Buscar Fornecedor"
+      (input)="search($event)"
+    />
+  </form>
+</div>
+<div class="home-container">
+  <h2>Lista de Fornecedores:</h2>
+
+  <div *ngIf="fornecedores.length > 0; else semFornecedores">
+    <div class="fornecedor-conteiner">
+      <div class="fornecedor" *ngFor="let fornecedor of fornecedores" >
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{fornecedor.nome}}</td>
+                <td>{{fornecedor.descricao}}</td>
+                <td>
+                  <button mat-button (click)="openPopUp(fornecedor)"><mat-icon>photo</mat-icon></button>
+                  <a mat-button routerLink="edit/{{fornecedor._id}}"><mat-icon>edit</mat-icon></a>
+                  <button mat-button (click)="removeHandler(fornecedor._id)"><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #semFornecedores>
+    <h1>Não há fornecedor cadastrado.</h1>
+  </ng-template>
+</div>
+
+
+
+

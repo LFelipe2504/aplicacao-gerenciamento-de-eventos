@@ -1,0 +1,6 @@
+<div *ngIf="bebida">
+  <h2>
+    Editando a bebida <span>{{ bebida.nome }}</span>
+  </h2>
+  <app-formulario-bebidas (onSubmit)="editHandler($event)" [bebidaData]="bebida" [btnText]="btnText"></app-formulario-bebidas>
+</div>

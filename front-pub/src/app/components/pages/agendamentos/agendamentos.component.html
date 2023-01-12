@@ -1,0 +1,56 @@
+<button (click)="cadastroHandler(cadastro)" value="cadastrar-agendamento"> Cadastrar Agendamento</button>
+<div *ngIf=" cadastro === true ">
+  <app-formulario-agendamentos [btnText]="btnText" (onSubmit)="createHandler($event)"></app-formulario-agendamentos>
+</div>
+<div class="search-container">
+  <form>
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Buscar Agendamento"
+      (input)="search($event)"
+    />
+  </form>
+</div>
+<div class="home-container">
+  <h2>Lista de Agendamentos:</h2>
+
+  <div *ngIf="agendamentos.length > 0; else semAgendamentos">
+    <div class="agendamento-conteiner">
+      <div class="agendamento" *ngFor="let agendamento of agendamentos" >
+          <table>
+            <thead>
+              <tr>
+                <th>Nome Usuário</th>
+                <th>Nome Evento</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{agendamento.nomeUsuario}}</td>
+                <td>{{agendamento.nomeEvento}}</td>
+                <td>{{agendamento.data | date : 'dd/MM/yyyy'}}</td>
+                <td>{{agendamento.hora }}</td>
+                <td>
+                  <a mat-button routerLink="usuario/{{agendamento.idUsuario}}"><mat-icon>edit</mat-icon></a>
+                  <button mat-button (click)="removeHandler(agendamento._id)"><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #semAgendamentos>
+    <h1>Não há agendamento cadastrado.</h1>
+  </ng-template>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<form (ngSubmit)="submit()" [formGroup]="fornecedorForm" #formDir="ngForm">
+  <input type="hidden" formControlName="id">
+
+  <div class="form-group" >
+    <label for="nome">Nome:</label>
+    <input  type="text" formControlName="nome" placeholder="Nome do fornecedor." required>
+    <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="nome.errors?.['required']">O nome é obrigatório!</p>
+      <p *ngIf="nome.errors?.['maxlenght']">Quantidade de caracteres inválida!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="foto">Foto:</label>
+    <input  type="text" formControlName="foto" placeholder="Insira a url da foto." required>
+    <div *ngIf="foto.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="foto.errors?.['required']">A url da foto é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="idade">Idade:</label>
+    <input type="number" placeholder="Idade do funcionário." formControlName="idade" required>
+    <div *ngIf="idade.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="idade.errors?.['required']">A idade é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="cargo">Cargo:</label>
+    <input type="text" placeholder="Cargo do funcionário." formControlName="cargo" required>
+    <div *ngIf="cargo.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="cargo.errors?.['required']">O cargo é obrigatório!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="naturalidade">Naturalidade:</label>
+    <input type="text" placeholder="Onde o funcionário nasceu." formControlName="naturalidade" required>
+    <div *ngIf="naturalidade.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="naturalidade.errors?.['required']">A naturalidade é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="anoAdmissao">Ano de admissão:</label>
+    <input type="number" placeholder="Ano de admissão do funcionário." formControlName="anoAdmissao" required>
+    <div *ngIf="anoAdmissao.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="anoAdmissao.errors?.['required']">O ano de admissão é obrigatório!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="hobbie">Hobbie:</label>
+    <textarea placeholder="Hobbie do funcionário." formControlName="hobbie" required></textarea>
+    <div *ngIf="hobbie.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="hobbie.errors?.['required']">O cadastro dos hobbies do funcionário é obrigatório!</p>
+    </div>
+  </div>
+
+  <input type="submit" value="{{btnText}}">
+
+</form>

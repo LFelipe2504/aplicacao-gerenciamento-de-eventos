@@ -1,0 +1,72 @@
+<mat-toolbar class="mat-elevation-z8">
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+
+  <div class="container">
+    <img
+        class=" mat-elevation-z8"
+        src="/assets/imagens/pub.png" width="200" height="60"/>
+  </div>
+
+
+
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+
+
+
+    <img src="https://media.giphy.com/media/LRs3XKAlHiNDkpOVCb/giphy.gif" width="200" height="100"alt="Gif do pub">
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/home">
+      <mat-icon >home</mat-icon>
+      <span>Home</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/funcionarios">
+      <mat-icon>people</mat-icon>
+      <span>Funcionários</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/fornecedores">
+      <mat-icon>local_shipping</mat-icon>
+      <span>Fornecedores</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/cardapio">
+      <mat-icon>local_dining</mat-icon>
+      <span>Cardápio</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/eventos">
+      <mat-icon>micro</mat-icon>
+      <span>Eventos</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/agendamentos">
+      <mat-icon>assignment_turned_in</mat-icon>
+      <span>Agendamentos</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/usuarios">
+      <mat-icon>person</mat-icon>
+      <span>Usuário</span>
+    </button>
+    <button mat-button class="menu-button" routerLink="/about">
+      <mat-icon>login</mat-icon>
+      <span>Login</span>
+    </button>
+
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

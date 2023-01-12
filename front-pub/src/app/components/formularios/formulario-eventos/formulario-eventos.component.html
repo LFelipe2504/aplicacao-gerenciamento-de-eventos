@@ -1,0 +1,66 @@
+<form (ngSubmit)="submit()" [formGroup]="eventoForm" #formDir="ngForm">
+
+  <input type="hidden" formControlName="id">
+
+  <div class="form-group" >
+    <label for="nome">Nome:</label>
+    <input  type="text" formControlName="nome" placeholder="Nome do evento." required>
+    <div *ngIf="nome.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="nome.errors?.['required']">O nome é obrigatório!</p>
+      <p *ngIf="nome.errors?.['maxlenght']">Quantidade de caracteres inválida!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="descricao">Descrição:</label>
+    <textarea placeholder="Descrição do evento." formControlName="descricao" required></textarea>
+    <div *ngIf="descricao.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="descricao.errors?.['required']">A descrição é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="foto">Imagem:</label>
+    <input  type="text" formControlName="foto" placeholder="Insira a url da imagem." required>
+    <div *ngIf="foto.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="foto.errors?.['required']">A url da imagem é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataInicio">Data de Início:</label>
+    <input  type="text" formControlName="dataInicio" placeholder="Insira a data de início do evento." required>
+    <div *ngIf="dataInicio.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="dataInicio.errors?.['required']">A data de início do evento é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="horaInicio">Hora de Início:</label>
+    <input  type="time" formControlName="horaInicio" placeholder="Insira a hora de início do evento." required>
+    <div *ngIf="horaInicio.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="horaInicio.errors?.['required']">A hora de início do evento é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dataFim">Data de Término:</label>
+    <input  type="text" formControlName="dataFim" placeholder="Insira a data de término do evento." required>
+    <div *ngIf="dataFim.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="dataFim.errors?.['required']">A data de término do evento é obrigatória!</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="horaFim">Hora de Término:</label>
+    <input  type="time" formControlName="horaFim" placeholder="Insira a hora de término do evento." required>
+    <div *ngIf="horaFim.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="horaFim.errors?.['required']">A hora de término do evento é obrigatória!</p>
+    </div>
+  </div>
+
+
+  <input type="submit" value="{{btnText}}">
+
+</form>
+

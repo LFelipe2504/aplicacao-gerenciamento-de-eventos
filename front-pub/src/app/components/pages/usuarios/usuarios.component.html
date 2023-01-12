@@ -1,0 +1,54 @@
+<button (click)="cadastroHandler(cadastro)" value="cadastrar-usuario">Cadastrar Usuário</button>
+<div *ngIf=" cadastro === true ">
+  <app-formulario-usuarios [btnText]="btnText" (onSubmit)="createHandler($event)"></app-formulario-usuarios>
+</div>
+<div class="search-container">
+  <form>
+    <fa-icon [icon]="faSearch"></fa-icon>
+    <input
+      type="text"
+      placeholder="Buscar Usuário"
+      (input)="search($event)"
+    />
+  </form>
+</div>
+<div class="home-container">
+  <h2>Lista de Usuários:</h2>
+
+  <div *ngIf="usuarios.length > 0; else semUsuarios">
+    <div class="usuario-conteiner">
+      <div class="usuario" *ngFor="let usuario of usuarios" >
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>E-mail</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.cpf}}</td>
+                <td>{{usuario.telefone}}</td>
+                <td>{{usuario.email}}</td>
+                <td>
+                  <a mat-button routerLink="edit/{{usuario._id}}"><mat-icon>edit</mat-icon></a>
+                  <button mat-button (click)="removeHandler(usuario._id)" ><mat-icon>delete</mat-icon></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  <ng-template #semUsuarios>
+    <h1>Não há usuário cadastrado.</h1>
+  </ng-template>
+</div>
+
+
+
+
