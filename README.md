@@ -5,7 +5,7 @@ Aplicação de gerenciamento de bar e eventos feito em Angular
 🔨 Funcionalidades do projeto
 
 Cadastro de usuários, funcionários, fornecedores, cardápio (comidas e bebidas), eventos e agendamentos;
-Consumo da API em Node: https://git.gft.com/cogv/pub/-/tree/master;
+Consumo da API em Node; 
 Banco de dados MongoDB Atlas diretamente na nuvem.
 
 ✔️ Tecnologias utilizadas
